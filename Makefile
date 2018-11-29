@@ -1,7 +1,7 @@
 all:
-	gcc -o auto_ftp ftp.c
-	gcc -o getList getList.c
+	gcc -o ftp_ls ftp_ls.c
+	gcc -o get_list get_list.c
 clean:
-	rm getList
-	rm auto_ftp
+	rm get_list
+	rm ftp_ls
 	rm -rf __pycache__

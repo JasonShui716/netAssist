@@ -22,7 +22,6 @@ int main(int argc, char *argv[])
     fprintf(fp, "binary\n");
     fprintf(fp, "prompt\n");
     fprintf(fp, "ls\n");
-    //fprintf(fp, "mget *%s\n", argv[4]);
     fprintf(fp, "bye\n");
     pclose(fp);
 }

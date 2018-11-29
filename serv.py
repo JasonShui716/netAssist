@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-from ftp import ftp_test
+from ftpls import ftpls
 import os
 app = Flask(__name__)
 
@@ -16,7 +16,7 @@ def login():
         host = request.form['host']
         user = request.form['user']
         password = request.form['password']
-        return ftp_test(host,user,password)
+        return ftpls(host,user,password)
 
 
 if __name__ == '__main__':
