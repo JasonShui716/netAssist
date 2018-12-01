@@ -4,11 +4,11 @@ int main(int argc, char *argv[])
 {
     FILE *fp;
     char str[255];
-    if (argc != 4)
+    if (argc != 4 && argc != 5)
     {
         printf("%s\n%s\n",
                "Usage:",
-               " auto_ftp <ip> <user> <pass> <filename>");
+               " ftp_ls <ip> <user> <pass> [<dir>]");
         exit(1);
     }
     if ((fp = popen("ftp -n", "w")) == NULL)
@@ -21,7 +21,10 @@ int main(int argc, char *argv[])
     fprintf(fp, "user %s %s\n", argv[2], argv[3]);
     fprintf(fp, "binary\n");
     fprintf(fp, "prompt\n");
-    fprintf(fp, "ls\n");
+    fprintf(fp, "ls");
+    if(argc == 5)
+	    fprintf(fp, " %s", argv[4]);
+    fprintf(fp, "\n");
     fprintf(fp, "bye\n");
     pclose(fp);
 }

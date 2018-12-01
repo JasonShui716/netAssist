@@ -1,14 +1,22 @@
 <html>
+	<head>
+		<link href={{url_for('static', filename="custom.css")}} rel="stylesheet">
+	</head>
+
 	<body>
-        <h1>FTP Assist (Web Version) V0.1</h1>
+        <h1>FTP Assist (Web Version) V0.1.1</h1>
         <p>Usage: Input host,username and password, then get a list of files in root dir.</p>
-        <p>Green for directory, and blue for files.</p>
-		<form action="/login" method="POST">
+	<p>Green for <a class="dir" href="#">directory</a>, and blue for <a class="file" href="#">files</a>.</p>
+	<form action="/login" method="POST">
             host:<input type="text" name="host"><br>
             username:<input type="text" name="user"><br>
             password:<input type="password" name="password"><br>
 			<input type="submit" value="submit">
-		</form>
+	</form>	
+	<h2>Update Record:</h2>
+	<p>2018.11.29 V0.1.0 List files by default</p>
+	<p>2018.12.02 V0.1.1 Add some styles, add API `/dir', which leads you to a deeper directory. <br>
+				Known Bug: Can't get into the second level directory.</p>
 	</body>
 </html>
 

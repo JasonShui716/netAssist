@@ -1,0 +1,9 @@
+.dir:link {color:#00FA9A}
+.dir:visited {color: #00FF00}
+.dir:hover {color:#00FF00}
+.dir:active {color:#00FF00}
+
+.file:link {color:#0000FF}
+.file:visited {color:#00B2EE}
+.file:hover {color:#00B2EE}
+.file:active {color:#00B2EE}

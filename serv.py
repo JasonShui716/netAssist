@@ -1,7 +1,8 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template,g,redirect,url_for,session
 from ftpls import ftpls
 import os
 app = Flask(__name__)
+app.secret_key = os.urandom(16)
 
 @app.route('/')
 def hello_world():
@@ -13,10 +14,20 @@ def login():
     if request.method == 'GET':
         return render_template('login.html')
     if request.method == 'POST':
-        host = request.form['host']
-        user = request.form['user']
-        password = request.form['password']
-        return ftpls(host,user,password)
+        session.permanent=True
+        session['host'] = request.form['host']
+        session['user'] = request.form['user']
+        session['password'] = request.form['password']
+        session['currdir'] = '|'
+        return redirect(url_for("cd",dirname='|'))
+
+@app.route('/dir/<path:dirname>/')
+def cd(dirname):
+    session['currdir'] = dirname
+    if dirname=='|':
+        session['currdir'] = '/'
+    print(dirname)
+    return ftpls(session['host'],session['user'],session['password'],session['currdir'])
 
 
 if __name__ == '__main__':

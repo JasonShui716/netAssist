@@ -1,23 +1,24 @@
 #include <stdio.h>
 int main(){
 	char type[10];
+	char class[6];
 	char fileName[50];
 	int ret,count=0;
 	for(int i=0;i<3;i++)
 		scanf("%*s");
 	while(1){
 		ret = scanf("%s",type);
-		if(ret==EOF|count>1000)
+		if(ret==EOF)
 			break;
 		if(type[0]=='d')
-			printf("<p style=\"color:green;\">");
+			sprintf(class,"dir");
 		else
-			printf("<p style=\"color:blue;\">");
+			sprintf(class,"file");
 		for(int i=0;i<7;i++){
 			count++;
 			scanf("%*s");
 		}
 		scanf("%s",fileName);
-		printf("%s\n</p>",fileName);
+		printf("<p><a class=\"%s\" href=\"/%s/%s\">%s</a></p>\n",class,class,fileName,fileName);
 	}
 }
