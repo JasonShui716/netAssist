@@ -10,10 +10,20 @@ def ftpls(host,user,password,directory):
                 <link rel='stylesheet' href= """ + url_for('static',filename='custom.css') + """>
             </head>
             <body>
+                <p><a class='back' href='/back'>..Back to prev directory</a></p>
     """
     str += output.read()
     str += """
-                <script type="text/javastript" src=""" + url_for('static', filename='make_dir.js') + """></script>
+            <script>
+                window.onload=function(){
+	                var dirList = document.querySelectorAll('a.dir');
+                    console.log(dirList);
+                    dirList.forEach(function(dirItem){
+                        dirItem.setAttribute("href",document.URL+dirItem.text);		
+                        console.log(dirItem.getAttribute("href"));
+                    });
+                }
+            </script>
             </body>
         </html>
     """

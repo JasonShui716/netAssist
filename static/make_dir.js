@@ -1,4 +1,4 @@
-window.onload = function(){
+function changeDir(){
 	var dirList = document.querySelectorAll('a.dir');
 	console.log(dirList);
 	alert('aaa');

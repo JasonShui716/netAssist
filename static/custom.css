@@ -7,3 +7,8 @@
 .file:visited {color:#00B2EE}
 .file:hover {color:#00B2EE}
 .file:active {color:#00B2EE}
+
+.back:link {color:#ff0000}
+.back:visited {color:#ff0000}
+.back:hover {color:#ff0000}
+.back:active {color:#ff0000}

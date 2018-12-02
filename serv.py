@@ -23,12 +23,19 @@ def login():
 
 @app.route('/dir/<path:dirname>/')
 def cd(dirname):
-    session['currdir'] = dirname
-    if dirname=='|':
-        session['currdir'] = '/'
+    if session['currdir']=='':
+        session['prevdir'] = '|'
+    elif session['currdir'][0]=='/':
+        session['prevdir'] = session['currdir'].replace(session['currdir'][0],'')
+    else:
+        pass
+    session['currdir'] = dirname.replace('|','')
     print(dirname)
     return ftpls(session['host'],session['user'],session['password'],session['currdir'])
 
+@app.route('/back')
+def back():
+    return redirect(url_for("cd", dirname=session['prevdir']))
 
 if __name__ == '__main__':
     app.run()
